@@ -12,12 +12,15 @@ def output_params(method, j, response):
 def random_method():
     response = requests.delete('https://playground.learnqa.ru/ajax/api/compare_query_type')
     print(response.text)
+    print(f"Статус код: {response.status_code}")
     print("--------------------")
 
 #2
 def other_method():
     response = requests.head('https://playground.learnqa.ru/ajax/api/compare_query_type')
     print(response.text)
+    print(response.headers)
+    print(f"Статус код: {response.status_code}")
     print("--------------------")
 
 #3
@@ -25,6 +28,7 @@ def get_with_params():
     params = {"method": "GET"}
     response = requests.get('https://playground.learnqa.ru/ajax/api/compare_query_type', params=params)
     print(response.text)
+    print(f"Статус код: {response.status_code}")
     print("--------------------")
 
 #4

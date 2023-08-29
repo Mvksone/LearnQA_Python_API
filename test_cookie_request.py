@@ -15,8 +15,8 @@ class TestCookieRequest:
             expected_cookie_name = "HomeWork"
             expected_cookie_value = 'hw_value'
 
-            assert expected_cookie_name == actual_cookie_name
-            assert expected_cookie_value == actual_cookie_value
+            assert expected_cookie_name == actual_cookie_name, "Actual cookie name does not match expected "
+            assert expected_cookie_value == actual_cookie_value, "Actual cookie value does not match expected "
         else:
             print("Cookie not found")
 

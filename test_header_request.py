@@ -17,8 +17,8 @@ class TestHeaderRequest:
             expected_header_name = "x-secret-homework-header"
             expected_header_value = 'Some secret value'
 
-            assert expected_header_name == actual_header_name
-            assert expected_header_value == actual_header_value
+            assert expected_header_name == actual_header_name , "Actual header name does not match expected "
+            assert expected_header_value == actual_header_value, "Actual header name does not match expected "
         else:
             print("Headers not found")
 
