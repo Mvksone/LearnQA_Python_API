@@ -47,7 +47,6 @@ class TestUserGet(BaseCase):
         response3 = requests.get(
             f"https://playground.learnqa.ru/api/user/{user_id_from_auth_metod-1}",
         )
-
         Assertions.assert_json_has_key(response3, "username")
         Assertions.assert_json_has_not_key(response3, "email")
         Assertions.assert_json_has_not_key(response3, "firstName")
