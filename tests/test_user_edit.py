@@ -1,8 +1,12 @@
 from lib.my_requests import MyRequests
 from lib.base_case import BaseCase
 from lib.assertions import Assertions
+import allure
 
+
+@allure.epic("Edit user testcases")
 class TestUserEdit(BaseCase):
+    @allure.description("This edit just created user")
     def test_edit_just_created_user(self):
         # REGISTER
         register_data =self.prepare_registration_data()
@@ -51,6 +55,7 @@ class TestUserEdit(BaseCase):
             "Wrong name of the user after edit"
         )
 
+    @allure.description("This test edit user without auth")
     def test_edit_user_without_auth(self):
         new_name = "Changed Name1"
         response1 = MyRequests.put(
@@ -62,6 +67,7 @@ class TestUserEdit(BaseCase):
         assert response1.content.decode(
                 "utf-8") == f"Auth token not supplied", f"Unexpected response content"
 
+    @allure.description("This test edit new user with auth as another user")
     def test_edit_new_user_with_auth_another_user(self):
          # REGISTER USER_1
          register_data =self.prepare_registration_data()
@@ -125,6 +131,7 @@ class TestUserEdit(BaseCase):
          edited_user_email = self.get_json_value(response6, "firstName")
          assert edited_user_email == new_name, f"The firstName parameter of user2 has not changed"
 
+    @allure.description("This test edit wrong email with auth the same user")
     def test_edit_wrong_email_with_auth_same_user(self):
     # REGISTER NEW USER
         register_data =self.prepare_registration_data()
@@ -158,6 +165,7 @@ class TestUserEdit(BaseCase):
         Assertions.assert_code_status(response3, 400)
         assert response3.content.decode("utf-8") == f"Invalid email format", f"Unexpected response content {response3.content}"
 
+    @allure.description("This test edit wrong firstName with auth the same user")
     def test_edit_wrong_firstName_with_auth_same_user(self):
     # REGISTER NEW USER
         register_data =self.prepare_registration_data()
